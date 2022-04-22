@@ -3,7 +3,7 @@ import java.util.Iterator;
 class Einfach_Verkettete_Liste implements Abstract_Einfach_verkettete_Liste {
     Node head;
 
-    class Node{
+    static class Node{
         int data;
         Node next = null;
 
@@ -43,8 +43,8 @@ class Einfach_Verkettete_Liste implements Abstract_Einfach_verkettete_Liste {
 
             @Override
             public boolean hasNext(){
-                if (current == null) return false;
-                return (current.next != null);
+                if (current == null) return head != null;
+                return current.next != null;
             }
 
             @Override
