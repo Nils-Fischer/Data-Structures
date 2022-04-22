@@ -1,13 +1,12 @@
 import java.util.Iterator;
 
 public class main {
-    public static void main(String[] args) {
-        Doppelt_verkettete_Liste list = new Doppelt_verkettete_Liste();
-        list.insert(3);
-        list.insert(4);
-        list.delete(3);
+    public static void main(String[] args) throws Exception {
+        Queue q = new Queue();
 
-        Iterator<Integer> it = list.iterator();
+        q.dequeue();
+
+        Iterator<Integer> it = q.iterator();
         System.out.println(it.next());
     }
 }
