@@ -24,19 +24,13 @@ public class Stack implements  Abstract_Stack{
 
     @Override
     public int peek() {
-        if (empty()) {  // falls der Stack leer ist, wird einen Fehler Meldung angezeigt
-            System.out.println("Stack is empty");
-            return -1;
-        }
+        if (empty()) throw new IndexOutOfBoundsException();
         return top.data;  // Wert des obersten Items wird ausgelesen und zurückgegeben
     }
 
     @Override
     public int pop() {
-        if (empty()) {  // falls der Stack leer ist, wird einen Fehler Meldung angezeigt
-            System.out.println("Stack is empty");
-            return -1;
-        }
+        if (empty()) throw new IndexOutOfBoundsException();
         int value = top.data;  // Wert des obersten Items wird ausgelesen
         top = top.prev;  // der Vorgänger des obersten Items wird zu top
         return value;
@@ -49,10 +43,7 @@ public class Stack implements  Abstract_Stack{
 
     @Override
     public int search(int data) {
-        if (empty()) {  // falls der Stack leer ist, wird einen Fehler Meldung angezeigt
-            System.out.println("Stack is empty");
-            return -1;
-        }
+        if (empty()) return -1; // wenn der Stack leer ist, wird direkt -1 zurückgegeben
         Item current = top;  // temporäres Item wird erstellt, um den Stack zu durchgehen
         int counter = 0;  // counter um tiefe des Items zu erfassen
         while (current.data != data){  // alle nicht passende Items im Stack werden durchlaufen
