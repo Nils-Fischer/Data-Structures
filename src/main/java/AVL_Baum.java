@@ -1,19 +1,16 @@
-class Node {
-    int key, height;
-    Node left, right;
-
-    Node(int d) {
-        key = d;
-        height = 1;
-    }
-}
-
-
-
 public class AVL_Baum implements Abstract_AVL_Baum {
 
         Node root;
 
+    class Node {
+        int key, height;
+        Node left, right;
+
+        Node(int d) {
+            key = d;
+            height = 1;
+        }
+    }
         public int height(Node N) {
             if (N == null){
                 return 0;
