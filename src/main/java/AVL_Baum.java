@@ -1,8 +1,8 @@
-class Node {
+class Node {	//Implementierung der Klasse Node
     int key, height;
     Node left, right;
 
-    Node(int d) {
+    Node(int d) {	//Konstruktor mit allen Variablen
         key = d;
         height = 1;
     }
@@ -10,22 +10,22 @@ class Node {
 
 
 
-public class AVL_Baum implements Abstract_AVL_Baum {
+public class AVL_Baum implements Abstract_AVL_Baum {	//Implementierung der Klasse AVL_Baum, implementiert die Methoden des Interfaces
 
         Node root;
 
-        public int height(Node N) {
+        public int height(Node N) {	//Methode um Tiefe eines Knotens auszugeben
             if (N == null){
                 return 0;
             }
             return N.height;
         }
 
-        public int max(int a, int b) {
+	public int max(int a, int b) {	//Methode zum ermitteln des Maximums zweier Integer
             return (a > b) ? a : b;
         }
 
-        public Node rightRotate(Node y) {
+        public Node rightRotate(Node y) {	//Methode zum Rotieren eines Subtrees nach rechts
             Node x = y.left;
             Node T2 = x.right;
             x.right = y;
@@ -35,7 +35,7 @@ public class AVL_Baum implements Abstract_AVL_Baum {
             return x;
         }
 
-        public Node leftRotate(Node x) {
+        public Node leftRotate(Node x) {	//Methode zum Rotieren eines Subtrees nach links
             Node y = x.right;
             Node T2 = y.left;
             y.left = x;
@@ -45,14 +45,14 @@ public class AVL_Baum implements Abstract_AVL_Baum {
             return y;
         }
 
-        public int getBalance(Node N) {
+        public int getBalance(Node N) {	//Methode zum Ermitteln des Balancefaktors eines Knotens
             if (N == null){
                 return 0;
             }
             return height(N.left) - height(N.right);
         }
 
-        public Node insert(Node node, int key) {
+        public Node insert(Node node, int key) {	//Methode zum Einfügen eines Knotens in den Baum
             if (node == null){
                 return (new Node(key));
             }
@@ -65,11 +65,11 @@ public class AVL_Baum implements Abstract_AVL_Baum {
             }
             else {
                 return node;
-            }
-            node.height = 1 + max(height(node.left),
+            }						//Bis hierhin BST Insertion
+            node.height = 1 + max(height(node.left),	//Updated die Tiefe des Knotens
                     height(node.right));
 
-            int balance = getBalance(node);
+            int balance = getBalance(node);		//Überprüft Balancefaktor
 
             if (balance > 1 && key < node.left.key){
                 return rightRotate(node);
@@ -92,7 +92,7 @@ public class AVL_Baum implements Abstract_AVL_Baum {
             return node;
         }
 
-        public void preOrder(Node node) {
+        public void preOrder(Node node) {	//Methode zum Erstellen eines Arrays zur Representation des Baums in In-Order Struktur
             if (node != null) {
                 System.out.print(node.key + " ");
                 preOrder(node.left);
@@ -100,7 +100,7 @@ public class AVL_Baum implements Abstract_AVL_Baum {
             }
         }
 
-        public static void main(String[] args) {
+        public static void main(String[] args) {	//Main-Method mit Testwerten
             AVL_Baum tree = new AVL_Baum();
 
             tree.root = tree.insert(tree.root, 10);
