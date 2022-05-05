@@ -52,7 +52,11 @@ public class AVL_Baum implements Abstract_AVL_Baum {	//Implementierung der Klass
             return height(N.left) - height(N.right);
         }
 
-        public Node insert(Node node, int key) {	//Methode zum Einfügen eines Knotens in den Baum
+        public void insert(int value){
+            insert(root, value);
+        }
+
+        private Node insert(Node node, int key) {	//Methode zum Einfügen eines Knotens in den Baum
             if (node == null){
                 return (new Node(key));
             }

@@ -31,7 +31,7 @@ public class Queue implements Abstract_Queue {
     @Override
     public int dequeue(){
         if (last == null) {  // falls die Queue leer ist:
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Queue ist leer");
         }
         int value = first.data;  // Inhalt des vordersten Elements wird als value kopiert
         if (last != first) {  // wenn die Queue mehr als ein Element enthält:

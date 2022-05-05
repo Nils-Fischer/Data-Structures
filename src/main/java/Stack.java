@@ -30,7 +30,7 @@ public class Stack implements  Abstract_Stack{
 
     @Override
     public int pop() {
-        if (empty()) throw new IndexOutOfBoundsException();
+        if (empty()) throw new IndexOutOfBoundsException("Stack ist leer");
         int value = top.data;  // Wert des obersten Items wird ausgelesen
         top = top.prev;  // der Vorgänger des obersten Items wird zu top
         return value;
