@@ -22,6 +22,6 @@ public class Queue_UnitTest {
                 IndexOutOfBoundsException.class,
                 queue::dequeue
         );
-        assertEquals(new IndexOutOfBoundsException(), exception);
+        assertEquals("Queue ist leer", exception.getMessage());
     }
 }

@@ -26,6 +26,6 @@ public class Stack_UnitTest {
                 IndexOutOfBoundsException.class,
                 stack::pop
         );
-        assertEquals(new IndexOutOfBoundsException(), exception);
+        assertEquals("Stack ist leer", exception.getMessage());
     }
 }
