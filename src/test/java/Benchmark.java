@@ -1,8 +1,6 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.Stack;
 
 public class Benchmark {
     private static int runs = 100;
@@ -98,11 +96,12 @@ public class Benchmark {
             long start = System.nanoTime();
             queue.enqueue(i);
             runtime_enqueue += (System.nanoTime() - start) / runs;
-
-            start = System.nanoTime();
+        }
+        for (int i = 0; i < runs; i++){
+            long start = System.nanoTime();
             queue.dequeue();
             runtime_dequeue += (System.nanoTime() - start) / runs;
-        }
+         }
         return new int[]{(int) runtime_enqueue, (int) runtime_dequeue};
     }
 
@@ -115,8 +114,9 @@ public class Benchmark {
             long start = System.nanoTime();
             queue.offer(i);
             runtime_enqueue += (System.nanoTime() - start) / runs;
-
-            start = System.nanoTime();
+        }
+        for (int i = 0; i < runs; i++){
+            long start = System.nanoTime();
             queue.poll();
             runtime_dequeue += (System.nanoTime() - start) / runs;
         }
@@ -127,21 +127,22 @@ public class Benchmark {
         Stack stack = new Stack();
         long runtime_push = 0;
         long runtime_pop = 0;
-        
+
         for (int i = 0; i < runs; i++){
-           long start = System.nanoTime();
-           stack.push(i);
-           runtime_push += (System.nanoTime() - start) / runs;
-           
-           start = System.nanoTime();
-           stack.pop();
-           runtime_pop += (System.nanoTime() - start) / runs;
+            long start = System.nanoTime();
+            stack.push(i);
+            runtime_push += (System.nanoTime() - start) / runs;
+        }
+        for (int i = 0; i < runs; i++){
+            long start = System.nanoTime();
+            stack.pop();
+            runtime_pop += (System.nanoTime() - start) / runs;
         }
         return new int[]{(int) runtime_push, (int) runtime_pop};
     }
 
     private static int[] runtime_JavaStack(){
-        Stack<Integer> stack = new Stack<>();
+        java.util.Stack<Integer> stack = new java.util.Stack<>();
         long runtime_push = 0;
         long runtime_pop = 0;
 
@@ -149,8 +150,9 @@ public class Benchmark {
             long start = System.nanoTime();
             stack.push(i);
             runtime_push += (System.nanoTime() - start) / runs;
-
-            start = System.nanoTime();
+        }
+        for (int i = 0; i < runs; i++){
+            long start = System.nanoTime();
             stack.pop();
             runtime_pop += (System.nanoTime() - start) / runs;
         }
