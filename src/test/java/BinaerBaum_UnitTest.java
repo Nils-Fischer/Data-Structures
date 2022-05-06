@@ -2,8 +2,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Iterator;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class BinärBaum_UnitTest {
-    private final Binär_Suchbaum tree = new Binär_Suchbaum();
+public class BinaerBaum_UnitTest {
+    private final binaer_Suchbaum tree = new binaer_Suchbaum();
     private final Iterator<Integer> it = tree.iterator();
 
     @Test

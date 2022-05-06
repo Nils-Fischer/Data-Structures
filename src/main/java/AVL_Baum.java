@@ -1,17 +1,16 @@
-class Node {	//Implementierung der Klasse Node
-    int key, height;
-    Node left, right;
-
-    Node(int d) {	//Konstruktor mit allen Variablen
-        key = d;
-        height = 1;
-    }
-}
-
-
+import java.util.Iterator;
 
 public class AVL_Baum implements Abstract_AVL_Baum {	//Implementierung der Klasse AVL_Baum, implementiert die Methoden des Interfaces
 
+    class Node {	//Implementierung der Klasse Node
+        int key, height;
+        Node left, right;
+
+        Node(int d) {	//Konstruktor mit allen Variablen
+            key = d;
+            height = 1;
+        }
+    }
         Node root;
 
         public int height(Node N) {	//Methode um Tiefe eines Knotens auszugeben
@@ -104,17 +103,18 @@ public class AVL_Baum implements Abstract_AVL_Baum {	//Implementierung der Klass
             }
         }
 
-        public static void main(String[] args) {	//Main-Method mit Testwerten
-            AVL_Baum tree = new AVL_Baum();
+    @Override
+    public Iterator<Integer> iterator() {
+            return new Iterator<>() {
+                @Override
+                public boolean hasNext() {
+                    return false;
+                }
 
-            tree.root = tree.insert(tree.root, 10);
-            tree.root = tree.insert(tree.root, 20);
-            tree.root = tree.insert(tree.root, 30);
-            tree.root = tree.insert(tree.root, 40);
-            tree.root = tree.insert(tree.root, 50);
-            tree.root = tree.insert(tree.root, 25);
-
-            System.out.println("Preorder of constructed tree is : ");
-            tree.preOrder(tree.root);
-        }
+                @Override
+                public Integer next() {
+                    return null;
+                }
+            };
     }
+}

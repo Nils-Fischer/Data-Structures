@@ -1,18 +1,19 @@
-class Node {	//Implementierung der Klasse Node
-    int value;
-    Node left;
-    Node right;
+import java.util.Iterator;
 
-    Node(int value) {	//Konstruktor mit allen Variablen
-        this.value = value;
-        right = null;
-        left = null;
-    }
-}
-
-public class Binär_Suchbaum implements Abstract_Binär_Suchbaum{	//Implementierung der Klasse Binär_Suchbaum, implementiert alle Methoden des Interfaces
+public class binaer_Suchbaum implements Abstract_Binaer_Suchbaum {	//Implementierung der Klasse Binär_Suchbaum, implementiert alle Methoden des Interfaces
     Node root;
 
+    class Node {	//Implementierung der Klasse Node
+        int value;
+        Node left;
+        Node right;
+
+        Node(int value) {	//Konstruktor mit allen Variablen
+            this.value = value;
+            right = null;
+            left = null;
+        }
+    }
     private Node addRecursive(Node current, int value) {	//Rekursive Implementierung der Add-Methode um einen Knoten hinzu zu fügen
         if (current == null) {
             return new Node(value);
@@ -32,8 +33,8 @@ public class Binär_Suchbaum implements Abstract_Binär_Suchbaum{	//Implementier
         root = addRecursive(root, value);
     }
 
-    private Binär_Suchbaum createBinaryTree() {		//Konstruktor mit Testwerten
-        Binär_Suchbaum bt = new Binär_Suchbaum();
+    private binaer_Suchbaum createBinaryTree() {		//Konstruktor mit Testwerten
+        binaer_Suchbaum bt = new binaer_Suchbaum();
 
         bt.add(6);
         bt.add(4);
@@ -80,5 +81,20 @@ public class Binär_Suchbaum implements Abstract_Binär_Suchbaum{	//Implementier
 
     public Node delete(int value){	//Public Method um die Rekursive delete Methode aufrufen zu können
         return deleteRecursive(root, value);
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new Iterator<>() {
+            @Override
+            public boolean hasNext() {
+                return false;
+            }
+
+            @Override
+            public Integer next() {
+                return null;
+            }
+        };
     }
 }
