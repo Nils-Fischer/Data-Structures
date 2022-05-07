@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class AVL_Baum implements Abstract_AVL_Baum {	//Implementierung der Klasse AVL_Baum, implementiert die Methoden des Interfaces
 
@@ -10,26 +13,26 @@ public class AVL_Baum implements Abstract_AVL_Baum {	//Implementierung der Klass
             key = d;
             height = 1;
         }
+}
+    Node root;
+
+    public int height(Node N) {	//Methode um Tiefe eines Knotens auszugeben
+        if (N == null){
+            return 0;
+        }
+        return N.height;
     }
-        Node root;
 
-        public int height(Node N) {	//Methode um Tiefe eines Knotens auszugeben
-            if (N == null){
-                return 0;
-            }
-            return N.height;
-        }
+    public int max(int a, int b) {	//Methode zum ermitteln des Maximums zweier Integer
+        return (a > b) ? a : b;
+    }
 
-	public int max(int a, int b) {	//Methode zum ermitteln des Maximums zweier Integer
-            return (a > b) ? a : b;
-        }
-
-        public Node rightRotate(Node y) {	//Methode zum Rotieren eines Subtrees nach rechts
-            Node x = y.left;
-            Node T2 = x.right;
-            x.right = y;
-            y.left = T2;
-            y.height = max(height(y.left), height(y.right)) + 1;
+    public Node rightRotate(Node y) {	//Methode zum Rotieren eines Subtrees nach rechts
+        Node x = y.left;
+        Node T2 = x.right;
+        x.right = y;
+        y.left = T2;
+        y.height = max(height(y.left), height(y.right)) + 1;
             x.height = max(height(x.left), height(x.right)) + 1;
             return x;
         }
@@ -52,6 +55,7 @@ public class AVL_Baum implements Abstract_AVL_Baum {	//Implementierung der Klass
         }
 
         public void insert(int value){
+            if (root == null) root = new Node(value);
             insert(root, value);
         }
 
@@ -105,16 +109,30 @@ public class AVL_Baum implements Abstract_AVL_Baum {	//Implementierung der Klass
 
     @Override
     public Iterator<Integer> iterator() {
-            return new Iterator<>() {
-                @Override
-                public boolean hasNext() {
-                    return false;
-                }
+        return new Iterator<>() {
+            private ArrayList<Node> tree = new ArrayList<>();
+            private int current = -1;
 
-                @Override
-                public Integer next() {
-                    return null;
+            @Override
+            public boolean hasNext() {
+                fillArray(root);
+                return (current < tree.size()-1);
+            }
+
+            @Override
+            public Integer next() {
+                fillArray(root);
+                current += 1;
+                return tree.get(current).key;
+            }
+
+            private void fillArray(Node current){
+                if (current != null) {
+                    fillArray(current.left);
+                    tree.add(current);
+                    fillArray(current.right);
                 }
-            };
+            }
+        };
     }
 }

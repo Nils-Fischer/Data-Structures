@@ -13,10 +13,10 @@ public class Queue_UnitTest {
        assertFalse(it.hasNext());
        queue.enqueue(4);
        assertTrue(it.hasNext());
-       assertEquals(5, queue.dequeue());
+       assertEquals(4, queue.dequeue());
     }
 
-    @Test @BeforeAll
+    @Test
     void exceptionTesting() {
         Exception exception = assertThrows(
                 IndexOutOfBoundsException.class,

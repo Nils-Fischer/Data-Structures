@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class binaer_Suchbaum implements Abstract_Binaer_Suchbaum {	//Implementierung der Klasse Binär_Suchbaum, implementiert alle Methoden des Interfaces
@@ -86,14 +87,28 @@ public class binaer_Suchbaum implements Abstract_Binaer_Suchbaum {	//Implementie
     @Override
     public Iterator<Integer> iterator() {
         return new Iterator<>() {
+            private ArrayList<binaer_Suchbaum.Node> tree = new ArrayList<>();
+            private int current = -1;
+
             @Override
             public boolean hasNext() {
-                return false;
+                fillArray(root);
+                return (current < tree.size()-1);
             }
 
             @Override
             public Integer next() {
-                return null;
+                fillArray(root);
+                current += 1;
+                return tree.get(current).value;
+            }
+
+            private void fillArray(binaer_Suchbaum.Node current){
+                if (current != null) {
+                    fillArray(current.left);
+                    tree.add(current);
+                    fillArray(current.right);
+                }
             }
         };
     }

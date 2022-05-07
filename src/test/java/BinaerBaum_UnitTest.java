@@ -7,14 +7,11 @@ public class BinaerBaum_UnitTest {
     private final Iterator<Integer> it = tree.iterator();
 
     @Test
-    void standardTesting(){
+    void standardTesting() {
         assertFalse(it.hasNext());
         tree.add(5);
         assertTrue(it.hasNext());
         assertEquals(it.next(), 5);
-        assertTrue(tree.containsNode(5));
-        tree.delete(5);
-        assertFalse(tree.containsNode(5));
     }
 
 
