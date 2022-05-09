@@ -1,4 +1,7 @@
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Min_Heap implements Abstract_Min_Heap {	//Implementierung der Klasse Min_Heap, implementiert alle Methoden des Interfaces
 
@@ -61,22 +64,6 @@ public class Min_Heap implements Abstract_Min_Heap {	//Implementierung der Klass
             System.out.print(" PARENT : " + Heap[i] + " LEFT CHILD : " + Heap[2 * i] + " RIGHT CHILD :" + Heap[2 * i + 1]);
             System.out.println();
         }
-    }
-
-    public static void main(String[] arg) {	//Main-Method mit Testwerten
-        Min_Heap minHeap = new Min_Heap(15);
-
-        minHeap.insert(5);
-        minHeap.insert(3);
-        minHeap.insert(17);
-        minHeap.insert(10);
-        minHeap.insert(84);
-        minHeap.insert(19);
-        minHeap.insert(6);
-        minHeap.insert(22);
-        minHeap.insert(9);
-
-        minHeap.print();
     }
 
     @Override

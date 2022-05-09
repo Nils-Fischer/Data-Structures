@@ -1,6 +1,7 @@
+import java.util.Comparator;
 import java.util.Iterator;
 
-public interface Abstract_AVL_Baum extends Iterable<Integer>{
+public interface Abstract_AVL_Baum extends Iterable<Integer>, Comparator<AVL_Baum.Node> {
     int height(AVL_Baum.Node N);
     int max(int a, int b);
     AVL_Baum.Node rightRotate(AVL_Baum.Node y);
@@ -9,4 +10,5 @@ public interface Abstract_AVL_Baum extends Iterable<Integer>{
     void insert(int key);
     void preOrder(AVL_Baum.Node node);
     Iterator<Integer> iterator();
+
 }

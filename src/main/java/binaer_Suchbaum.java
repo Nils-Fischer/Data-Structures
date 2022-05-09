@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 
 public class binaer_Suchbaum implements Abstract_Binaer_Suchbaum {	//Implementierung der Klasse Binär_Suchbaum, implementiert alle Methoden des Interfaces
     Node root;
@@ -34,16 +33,23 @@ public class binaer_Suchbaum implements Abstract_Binaer_Suchbaum {	//Implementie
         root = addRecursive(root, value);
     }
 
-    private binaer_Suchbaum createBinaryTree() {		//Konstruktor mit Testwerten
+    public binaer_Suchbaum createBinaryTree() {		//Konstruktor mit Testwerten
         binaer_Suchbaum bt = new binaer_Suchbaum();
 
-        bt.add(6);
-        bt.add(4);
-        bt.add(8);
-        bt.add(3);
-        bt.add(5);
-        bt.add(7);
-        bt.add(9);
+        List<Integer> list = new LinkedList<>();
+        list.add(10);
+        list.add(100);
+        list.add(1);
+        list.add(1000);
+
+        ElementComparator comparator = new ElementComparator();
+        Collections.sort(list, comparator);
+
+
+        bt.add(list.get(0));
+        bt.add(list.get(1));
+        bt.add(list.get(2));
+        bt.add(list.get(3));
 
         return bt;
     }
@@ -70,7 +76,7 @@ public class binaer_Suchbaum implements Abstract_Binaer_Suchbaum {	//Implementie
         }
 
         if (value == current.value) {
-            
+
         }
         if (value < current.value) {
             current.left = deleteRecursive(current.left, value);
