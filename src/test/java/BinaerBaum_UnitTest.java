@@ -13,7 +13,4 @@ public class BinaerBaum_UnitTest {
         assertTrue(it.hasNext());
         assertEquals(it.next(), 5);
     }
-
-
-
 }
