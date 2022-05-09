@@ -81,6 +81,19 @@ public class Min_Heap implements Abstract_Min_Heap {	//Implementierung der Klass
 
     @Override
     public Iterator<Integer> iterator() {
-        return null;
+        return new Iterator<Integer>() {
+            private int current = 0;
+
+            @Override
+            public boolean hasNext() {
+                return (Heap.length - 1 > current);
+            }
+
+            @Override
+            public Integer next() {
+                current += 1;
+                return Heap[current];
+            }
+        };
     }
 }

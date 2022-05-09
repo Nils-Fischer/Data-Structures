@@ -8,9 +8,8 @@ public class MinHeap_UnitTest {
 
     @Test
     void standardTesting() {
-        assertFalse(it.hasNext());
-        heap.insert(5);
-        assertTrue(it.hasNext());
+        heap.insert(5); heap.insert(4);
+        assertEquals(it.next(), 4);
         assertEquals(it.next(), 5);
         assertFalse(it.hasNext());
     }

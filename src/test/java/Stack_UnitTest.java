@@ -13,14 +13,14 @@ public class Stack_UnitTest {
         assertFalse(it.hasNext());
         stack.push(5); stack.push(2); stack.push(3);
         assertTrue(it.hasNext());
-        assertEquals(5, stack.peek());
-        assertEquals(2, stack.search(3));
-        assertEquals(5, stack.pop());
+        assertEquals(3, stack.peek());
+        assertEquals(2, stack.search(5));
+        assertEquals(3, stack.pop());
         stack.pop(); stack.pop();
         assertTrue(stack.empty());
     }
 
-    @Test @BeforeAll
+    @Test
     void exceptionTesting() {
         Exception exception = assertThrows(
                 IndexOutOfBoundsException.class,
